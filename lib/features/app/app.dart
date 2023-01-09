@@ -17,7 +17,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return StatsFl(
       maxFps: 120,
-      align: Alignment.bottomRight,
+      align: Alignment.topRight,
       isEnabled: env.debug,
       child: BlocProvider(
         create: (context) => getIt<AppCubit>(),

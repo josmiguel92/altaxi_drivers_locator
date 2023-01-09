@@ -2,7 +2,8 @@
     "navigation": {
         "bottom": {
             "features": "Features",
-            "informations": "Informations"
+            "informations": "Informations",
+            "geolocation": "Geo Location"
         }
     },
     "form": {
@@ -34,6 +35,9 @@
     "file_picker": {
         "size_warning": "File size cannot be more than $maxSize mb.",
         "no_permission": "We have no permission to open your gallery."
+    },
+    "location": {
+        "no_permission": "We have no permission to access your location."
     },
     "test": {
         "succeded": "Test successfull.",

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_boilerplate/features/auth/login/blocs/auth_cubit.dart';
 import 'package:flutter_advanced_boilerplate/features/features/features_screen.dart';
+import 'package:flutter_advanced_boilerplate/features/geolocation/geolocation_screen.dart';
 import 'package:flutter_advanced_boilerplate/features/informations/informations_screen.dart';
 import 'package:flutter_advanced_boilerplate/i18n/strings.g.dart';
 import 'package:flutter_advanced_boilerplate/modules/dependency_injection/di.dart';
@@ -67,13 +68,25 @@ class _Insets {
 @immutable
 class _Shadows {
   final textSoft = [
-    Shadow(color: Colors.black.withOpacity(0.25), offset: const Offset(0, 2), blurRadius: 4),
+    Shadow(
+      color: Colors.black.withOpacity(0.25),
+      offset: const Offset(0, 2),
+      blurRadius: 4,
+    ),
   ];
   final text = [
-    Shadow(color: Colors.black.withOpacity(0.6), offset: const Offset(0, 2), blurRadius: 2),
+    Shadow(
+      color: Colors.black.withOpacity(0.6),
+      offset: const Offset(0, 2),
+      blurRadius: 2,
+    ),
   ];
   final textStrong = [
-    Shadow(color: Colors.black.withOpacity(0.6), offset: const Offset(0, 4), blurRadius: 6),
+    Shadow(
+      color: Colors.black.withOpacity(0.6),
+      offset: const Offset(0, 4),
+      blurRadius: 6,
+    ),
   ];
 }
 
@@ -123,11 +136,22 @@ class _Navigation {
   List<AppBar> appbars(BuildContext context) => [
         AppBar(
           leading: IconButton(
+            // onPressed: () => {},
             onPressed: () => getIt<AuthCubit>().logOut(),
             icon: const Icon(MdiIcons.logout),
           ),
           title: Text(
             context.t.core.navigation.bottom.features,
+          ),
+        ),
+        AppBar(
+          leading: IconButton(
+            onPressed: () => {},
+            // onPressed: () => getIt<AuthCubit>().logOut(),
+            icon: const Icon(MdiIcons.mapMarker),
+          ),
+          title: Text(
+            context.t.core.navigation.bottom.geolocation,
           ),
         ),
         AppBar(
@@ -140,6 +164,7 @@ class _Navigation {
   /// Bottom navigation configuration.
   List<Widget> bottomNavigationScreens() => const [
         FeaturesScreen(),
+        GeolocationScreen(),
         InformationsScreen(),
       ];
 
@@ -150,6 +175,13 @@ class _Navigation {
             size: 24,
           ),
           label: context.t.core.navigation.bottom.features,
+        ),
+        NavigationDestination(
+          icon: const Icon(
+            MdiIcons.mapMarker,
+            size: 24,
+          ),
+          label: context.t.core.navigation.bottom.geolocation,
         ),
         NavigationDestination(
           icon: const Icon(

@@ -1,0 +1,12 @@
+{
+    "github_repository_title": "GitHub Repository",
+    "status_divider_title": "Estado de Ubicación",
+    "packages_divider_title": "Packages",
+    "donate_card_title": "Buy Me A Coffee",
+    "enable_geolocation": "Enable Geolocation",
+    "service_disabled": "Location services are disabled.",
+    "service_denied": "Location services access were denied.",
+    "service_denied_forever": "Location permissions are permanently denied, we cannot request permissions."
+    
+
+}
