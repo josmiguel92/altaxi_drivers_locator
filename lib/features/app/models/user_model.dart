@@ -9,13 +9,16 @@ class UserModel with _$UserModel {
     required String id,
     required String username,
     required String email,
+    required String password,
   }) = _UserModel;
 
   factory UserModel.initial() => const UserModel(
         id: '',
         username: '',
         email: '',
+        password: '',
       );
 
-  factory UserModel.fromJson(Map<String, dynamic> json) => _$UserModelFromJson(json);
+  factory UserModel.fromJson(Map<String, dynamic> json) =>
+      _$UserModelFromJson(json);
 }
