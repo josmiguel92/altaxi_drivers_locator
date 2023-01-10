@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_advanced_boilerplate/utils/helpers/location_helper.dart';
 import 'package:flutter_advanced_boilerplate/utils/methods/shortcuts.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter_advanced_boilerplate/features/app/models/alert_model.dart';
 import 'package:flutter_advanced_boilerplate/features/geolocation/widgets/grid_item.dart';
-// import 'package:flutter_advanced_boilerplate/features/geolocation/widgets/link_card.dart';
 import 'package:flutter_advanced_boilerplate/features/geolocation/widgets/text_divider.dart';
 import 'package:flutter_advanced_boilerplate/i18n/strings.g.dart';
 import 'package:flutter_advanced_boilerplate/utils/helpers/bar_helper.dart';
@@ -11,11 +11,6 @@ import 'package:flutter_advanced_boilerplate/utils/helpers/permission_helper.dar
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter_advanced_boilerplate/features/app/widgets/customs/custom_button.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
-import 'package:pocketbase/pocketbase.dart';
-import 'package:workmanager/workmanager.dart';
-
-const fetchBackground = "fetchBackground";
-const simpleTaskKey = "altaxi.workmanagerExample.simpleTask";
 
 class GeolocationScreen extends StatefulWidget {
   const GeolocationScreen({super.key});
@@ -26,7 +21,6 @@ class GeolocationScreen extends StatefulWidget {
 
 class _GeolocationScreenState extends State<GeolocationScreen> {
   late RoundedLoadingButtonController _btnController;
-  late Workmanager _workmanager;
 
   @override
   void initState() {
@@ -35,13 +29,7 @@ class _GeolocationScreenState extends State<GeolocationScreen> {
   }
 
   Future<void> getLocation() async {
-    Workmanager().registerPeriodicTask(
-      simpleTaskKey,
-      simpleTaskKey,
-      initialDelay: Duration(seconds: 10),
-    );
-
-    print('GetLocation methiod');
+    print('GetLocation method');
     bool serviceEnabled;
     LocationPermission permission;
 
@@ -94,24 +82,7 @@ class _GeolocationScreenState extends State<GeolocationScreen> {
       // continue accessing the position of the device.
       // return await Geolocator.getCurrentPosition();
 
-      Position position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high,
-      );
-      print(Geolocator.getLocationAccuracy());
-      print(position);
-      final pb = PocketBase('https://base.altaxi.app');
-      // authenticate as regular user
-      final userData = await pb
-          .collection('drivers')
-          .authWithPassword('test@altaxi.app', '12345678');
-      print(userData);
-      final newRecord = await pb.collection('drivers_location').create(
-        body: {
-          'driver': userData.record?.id,
-          'geolocation': position.toJson(),
-        },
-      );
-      print(newRecord);
+      sendLocationToBase(info: 'manual');
     }
   }
 
@@ -167,7 +138,7 @@ class _GeolocationScreenState extends State<GeolocationScreen> {
                 title: context.t.informations.donate_card_title,
                 icon: MdiIcons.coffee,
                 url: Uri.parse(
-                  'https://www.buymeacoffee.com/iamfikretB',
+                  'https://altaxi.app',
                 ),
               ),
               // GridItem(

@@ -3,11 +3,11 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_advanced_boilerplate/features/app/app.dart';
-import 'package:flutter_advanced_boilerplate/features/geolocation/geolocation_screen.dart';
 import 'package:flutter_advanced_boilerplate/i18n/strings.g.dart';
 import 'package:flutter_advanced_boilerplate/modules/bloc_observer/observer.dart';
 import 'package:flutter_advanced_boilerplate/modules/dependency_injection/di.dart';
 import 'package:flutter_advanced_boilerplate/modules/sentry/sentry_module.dart';
+import 'package:flutter_advanced_boilerplate/utils/helpers/location_helper.dart';
 import 'package:flutter_displaymode/flutter_displaymode.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:geolocator/geolocator.dart';
@@ -18,43 +18,47 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:universal_platform/universal_platform.dart';
 import 'package:url_strategy/url_strategy.dart';
 import 'package:workmanager/workmanager.dart';
+import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 
-const simpleTaskKey = "altaxi.workmanagerExample.simpleTask";
+const fetchBackground = "fetchBackground";
 
-@pragma(
-    'vm:entry-point') // Mandatory if the App is obfuscated or using Flutter 3.1+
 void callbackDispatcher() {
   Workmanager().executeTask((task, inputData) async {
     switch (task) {
-      case simpleTaskKey:
-        print("$simpleTaskKey was executed. inputData = $inputData");
+      case fetchBackground:
+        print('⭐ workmanager called');
+        final result = sendLocationToBase(info: 'workmanager');
+        print({'🔥 result': result, 'time': DateTime.now().toString()});
 
-        Position position = await Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.high,
-        );
-        print(Geolocator.getLocationAccuracy());
-        print(position);
-        final pb = PocketBase('https://base.altaxi.app');
-        // authenticate as regular user
-        final userData = await pb
-            .collection('drivers')
-            .authWithPassword('test@altaxi.app', '12345678');
-        print(userData);
-        final newRecord = await pb.collection('drivers_location').create(
-          body: {
-            'driver': userData.record?.id,
-            'geolocation': position.toJson(),
-          },
-        );
-        print(newRecord);
-        break;
+        return result;
     }
 
-    return Future.value(true);
+    return Future.value(false);
   });
 }
 
+// Be sure to annotate your callback function to avoid issues in release mode on Flutter >= 3.3.0
+@pragma('vm:entry-point')
+void sendLocationAlarm() {
+  print('⏰ alarm called');
+  sendLocationToBase(info: 'alarm-method');
+}
+
 Future<void> main() async {
+  // Be sure to add this line if initialize() call happens before runApp()
+  WidgetsFlutterBinding.ensureInitialized();
+  await Workmanager().initialize(
+    callbackDispatcher,
+    isInDebugMode: true,
+  );
+  await Workmanager().registerPeriodicTask(
+    "1",
+    fetchBackground,
+    frequency: Duration(seconds: 10),
+  );
+
+  await AndroidAlarmManager.initialize();
+
   await runZonedGuarded<Future<void>>(
     () async {
       // Preserve splash screen until authentication complete.
@@ -121,5 +125,12 @@ Future<void> main() async {
         stackTrace: stackTrace,
       );
     },
+  );
+
+  final int locatioAlamdID = 0;
+  await AndroidAlarmManager.periodic(
+    const Duration(minutes: 5),
+    locatioAlamdID,
+    sendLocationAlarm,
   );
 }
