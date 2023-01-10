@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_advanced_boilerplate/features/app/app.dart';
@@ -10,15 +11,12 @@ import 'package:flutter_advanced_boilerplate/modules/sentry/sentry_module.dart';
 import 'package:flutter_advanced_boilerplate/utils/helpers/location_helper.dart';
 import 'package:flutter_displaymode/flutter_displaymode.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:pocketbase/pocketbase.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:universal_platform/universal_platform.dart';
 import 'package:url_strategy/url_strategy.dart';
 import 'package:workmanager/workmanager.dart';
-import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 
 const fetchBackground = "fetchBackground";
 
@@ -45,7 +43,7 @@ void sendLocationAlarm() {
 }
 
 Future<void> main() async {
-  // Be sure to add this line if initialize() call happens before runApp()
+  // Be sure to add this line if initialize() call happens before runApp().
   WidgetsFlutterBinding.ensureInitialized();
   await Workmanager().initialize(
     callbackDispatcher,

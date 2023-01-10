@@ -9,7 +9,7 @@ class UserModel with _$UserModel {
     required String id,
     required String username,
     required String email,
-    required String password,
+    required String? password,
   }) = _UserModel;
 
   factory UserModel.initial() => const UserModel(

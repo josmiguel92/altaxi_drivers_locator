@@ -8,6 +8,7 @@ import 'package:flutter_advanced_boilerplate/features/app/widgets/utils/keyboard
 import 'package:flutter_advanced_boilerplate/features/app/widgets/utils/material_splash_tappable.dart';
 import 'package:flutter_advanced_boilerplate/features/auth/register/blocs/register_cubit.dart';
 import 'package:flutter_advanced_boilerplate/features/auth/register/form/register_form.dart';
+import 'package:flutter_advanced_boilerplate/features/auth/register/networking/register_repository.dart';
 import 'package:flutter_advanced_boilerplate/i18n/strings.g.dart';
 import 'package:flutter_advanced_boilerplate/utils/constants.dart';
 import 'package:flutter_advanced_boilerplate/utils/helpers/bar_helper.dart';
@@ -108,8 +109,154 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
+    return BlocProvider<RegisterCubit>(
+      create: (_) => RegisterCubit(RegisterRepository()),
+      child: KeyboardDismisserWidget(
+        child: ReactiveForm(
+          formGroup: _form,
+          child: Scaffold(
+            body: Padding(
+              padding: EdgeInsets.symmetric(horizontal: $constants.insets.md),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  if (UniversalPlatform.isAndroid ||
+                      UniversalPlatform.isIOS) ...{
+                    ReactiveFormConsumer(
+                      builder: (context, formGroup, child) {
+                        return MaterialSplashTappable(
+                          radius: 50,
+                          onTap: checkPermission,
+                          child: CircleAvatar(
+                            radius: 50,
+                            backgroundColor: getCustomOnPrimaryColor(context)
+                                .withOpacity(0.05),
+                            backgroundImage: photo != null
+                                ? Image.file(
+                                    photo!,
+                                    fit: BoxFit.cover,
+                                  ).image
+                                : null,
+                            child: photo == null
+                                ? Icon(
+                                    MdiIcons.image,
+                                    color: getTheme(context).onBackground,
+                                  )
+                                : null,
+                          ),
+                        );
+                      },
+                    ),
+                    SizedBox(height: $constants.insets.md),
+                  },
+                  CustomTextField(
+                    key: const Key('username'),
+                    formControlName: 'username',
+                    keyboardType: TextInputType.text,
+                    textInputAction: TextInputAction.next,
+                    labelText: context.t.core.form.username.label,
+                    hintText: context.t.core.form.username.hint,
+                    minLength: 4,
+                    isRequired: true,
+                  ),
+                  CustomTextField(
+                    key: const Key('email'),
+                    formControlName: 'email',
+                    keyboardType: TextInputType.text,
+                    textInputAction: TextInputAction.next,
+                    labelText: context.t.core.form.email.label,
+                    hintText: context.t.core.form.email.hint,
+                    minLength: 4,
+                    isRequired: true,
+                  ),
+                  ReactiveFormConsumer(
+                    builder: (context, formGroup, child) {
+                      return CustomTextField(
+                        key: const Key('password'),
+                        formControlName: 'password',
+                        keyboardType: TextInputType.text,
+                        textInputAction: TextInputAction.send,
+                        obscureText: true,
+                        labelText: context.t.core.form.password.label,
+                        hintText: context.t.core.form.password.hint,
+                        minLength: 8,
+                        isRequired: true,
+                        onSubmitted: _form.valid
+                            ? (_) => BlocProvider.of<RegisterCubit>(context)
+                                    .register(
+                                  username: username,
+                                  password: password,
+                                  passwordConfirm: passwordConfirm,
+                                  email: email,
+                                  phone: phone,
+                                )
+                            : null,
+                      );
+                    },
+                  ),
+                  ReactiveFormConsumer(
+                    builder: (context, formGroup, child) {
+                      return CustomTextField(
+                        key: const Key('passwordConfirm'),
+                        formControlName: 'passwordConfirm',
+                        keyboardType: TextInputType.text,
+                        textInputAction: TextInputAction.send,
+                        obscureText: true,
+                        labelText: context.t.core.form.passwordConfirm.label,
+                        hintText: context.t.core.form.passwordConfirm.hint,
+                        minLength: 8,
+                        isRequired: true,
+                        onSubmitted: _form.valid
+                            ? (_) => BlocProvider.of<RegisterCubit>(context)
+                                    .register(
+                                  username: username,
+                                  password: password,
+                                  passwordConfirm: passwordConfirm,
+                                  email: email,
+                                  phone: phone,
+                                )
+                            : null,
+                      );
+                    },
+                  ),
+                  CustomTextField(
+                    key: const Key('phone'),
+                    formControlName: 'phone',
+                    keyboardType: TextInputType.phone,
+                    textInputAction: TextInputAction.go,
+                    labelText: context.t.core.form.phone.label,
+                    hintText: context.t.core.form.phone.hint,
+                    minLength: 8,
+                    isRequired: true,
+                  ),
+                  SizedBox(height: $constants.insets.sm),
+                  ReactiveFormConsumer(
+                    builder: (context, formGroup, child) => CustomButton(
+                      controller: _btnController,
+                      width: getSize(context).width,
+                      text: context.t.register.register_button,
+                      onPressed: _form.valid
+                          ? () =>
+                              BlocProvider.of<RegisterCubit>(context).register(
+                                username: username,
+                                password: password,
+                                passwordConfirm: passwordConfirm,
+                                email: email,
+                                phone: phone,
+                              )
+                          : null,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+
     return BlocListener<RegisterCubit, RegisterState>(
-      bloc: widget.cubit ?? context.read<RegisterCubit>(),
+      bloc: context.read<RegisterCubit>(),
       listener: (context, state) {
         state.maybeWhen(
           loading: () {

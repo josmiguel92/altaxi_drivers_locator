@@ -8,7 +8,12 @@ import 'package:flutter_advanced_boilerplate/features/app/widgets/utils/keyboard
 import 'package:flutter_advanced_boilerplate/features/app/widgets/utils/material_splash_tappable.dart';
 import 'package:flutter_advanced_boilerplate/features/auth/login/blocs/auth_cubit.dart';
 import 'package:flutter_advanced_boilerplate/features/auth/login/form/login_form.dart';
+import 'package:flutter_advanced_boilerplate/features/auth/register/blocs/register_cubit.dart';
+import 'package:flutter_advanced_boilerplate/features/app/blocs/app_cubit.dart';
+import 'package:flutter_advanced_boilerplate/features/auth/register/presentation/register_screen.dart';
+import 'package:flutter_advanced_boilerplate/features/features/widgets/components/info_card.dart';
 import 'package:flutter_advanced_boilerplate/i18n/strings.g.dart';
+import 'package:flutter_advanced_boilerplate/modules/dependency_injection/di.dart';
 import 'package:flutter_advanced_boilerplate/utils/constants.dart';
 import 'package:flutter_advanced_boilerplate/utils/helpers/bar_helper.dart';
 import 'package:flutter_advanced_boilerplate/utils/helpers/permission_helper.dart';
@@ -37,12 +42,13 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final ImagePicker picker = ImagePicker();
 
-  late RoundedLoadingButtonController _btnController;
+  late RoundedLoadingButtonController _btnController, _registerBtnController;
   late FormGroup _form;
 
   @override
   void initState() {
     _btnController = RoundedLoadingButtonController();
+    _registerBtnController = RoundedLoadingButtonController();
     _form = widget.form ?? loginForm;
     super.initState();
   }
@@ -70,7 +76,8 @@ class _LoginScreenState extends State<LoginScreen> {
   Future<void> selectPhoto() async {
     const maxPhotoSizeInByte = 2000000;
 
-    final photo = await picker.pickImage(source: ImageSource.gallery, imageQuality: 25);
+    final photo =
+        await picker.pickImage(source: ImageSource.gallery, imageQuality: 25);
 
     if (photo == null) {
       return;
@@ -93,7 +100,8 @@ class _LoginScreenState extends State<LoginScreen> {
       BarHelper.showAlert(
         context,
         alert: AlertModel(
-          message: context.t.core.file_picker.size_warning(maxSize: maxPhotoSizeInByte / 1000000),
+          message: context.t.core.file_picker
+              .size_warning(maxSize: maxPhotoSizeInByte / 1000000),
           type: AlertType.destructive,
         ),
       );
@@ -154,7 +162,8 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  if (UniversalPlatform.isAndroid || UniversalPlatform.isIOS) ...{
+                  if (UniversalPlatform.isAndroid ||
+                      UniversalPlatform.isIOS) ...{
                     ReactiveFormConsumer(
                       builder: (context, formGroup, child) {
                         return MaterialSplashTappable(
@@ -162,7 +171,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           onTap: checkPermission,
                           child: CircleAvatar(
                             radius: 50,
-                            backgroundColor: getCustomOnPrimaryColor(context).withOpacity(0.05),
+                            backgroundColor: getCustomOnPrimaryColor(context)
+                                .withOpacity(0.05),
                             backgroundImage: photo != null
                                 ? Image.file(
                                     photo!,
@@ -225,6 +235,13 @@ class _LoginScreenState extends State<LoginScreen> {
                               )
                           : null,
                     ),
+                  ),
+                  Divider(),
+                  InfoCard(
+                    title: context.t.register.register_button,
+                    content: context.t.register.explanation,
+                    icon: MdiIcons.carInfo,
+                    widget: const RegisterScreen(),
                   ),
                 ],
               ),

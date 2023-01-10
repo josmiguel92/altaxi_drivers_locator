@@ -14,7 +14,20 @@
         "password": {
             "label": "Password",
             "hint": "Enter your password"
+        },
+        "email": {
+            "label": "Email",
+            "hint": "Enter your email"
+        },
+        "passwordConfirm": {
+            "label": "Confirm password",
+            "hint": "Enter your password again"
+        },
+        "phone": {
+            "label": "Phone number",
+            "hint": "Enter your phone number"
         }
+
     },
     "errors": {
         "form": {
