@@ -54,7 +54,7 @@ Future<void> main() async {
   await Workmanager().registerPeriodicTask(
     "1",
     fetchBackground,
-    frequency: Duration(seconds: 10),
+    frequency: Duration(minutes: 15),
   );
 
   await AndroidAlarmManager.initialize();
