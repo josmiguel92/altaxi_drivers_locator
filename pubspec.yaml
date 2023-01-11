@@ -85,6 +85,7 @@ dependencies:
   pocketbase: ^0.5.0
   workmanager: ^0.5.1
   android_alarm_manager_plus: ^2.1.0
+  shared_preferences: ^2.0.15
 
 dev_dependencies:
   flutter_test:

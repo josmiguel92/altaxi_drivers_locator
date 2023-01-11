@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_boilerplate/features/features/widgets/components/theme_customizer.dart';
-import 'package:flutter_advanced_boilerplate/features/features/widgets/features_list.dart';
-import 'package:flutter_advanced_boilerplate/i18n/strings.g.dart';
-import 'package:flutter_advanced_boilerplate/utils/methods/shortcuts.dart';
+import 'package:altaxi_drivers_locator/features/features/widgets/components/theme_customizer.dart';
+import 'package:altaxi_drivers_locator/features/features/widgets/features_list.dart';
+import 'package:altaxi_drivers_locator/i18n/strings.g.dart';
+import 'package:altaxi_drivers_locator/utils/methods/shortcuts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class FeaturesScreen extends StatelessWidget {
@@ -14,24 +14,24 @@ class FeaturesScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       physics: const BouncingScrollPhysics(),
       children: [
-        Card(
-          child: SwitchListTile(
-            onChanged: (bool newValue) {
-              LocaleSettings.setLocale(newValue ? AppLocale.tr : AppLocale.en);
-            },
-            value: context.t.$meta.locale == AppLocale.tr,
-            title: Row(
-              children: [
-                const Icon(MdiIcons.translate),
-                const SizedBox(width: 16),
-                Text(
-                  context.t.features.use_turkish,
-                  style: getTextTheme(context).titleSmall!.apply(fontWeightDelta: 2),
-                ),
-              ],
-            ),
-          ),
-        ),
+        // Card(
+        //   child: SwitchListTile(
+        //     onChanged: (bool newValue) {
+        //       LocaleSettings.setLocale(newValue ? AppLocale.tr : AppLocale.en);
+        //     },
+        //     value: context.t.$meta.locale == AppLocale.tr,
+        //     title: Row(
+        //       children: [
+        //         const Icon(MdiIcons.translate),
+        //         const SizedBox(width: 16),
+        //         Text(
+        //           context.t.features.use_turkish,
+        //           style: getTextTheme(context).titleSmall!.apply(fontWeightDelta: 2),
+        //         ),
+        //       ],
+        //     ),
+        //   ),
+        // ),
         const ThemeCustomizer(),
         const SizedBox(height: 16),
         Padding(

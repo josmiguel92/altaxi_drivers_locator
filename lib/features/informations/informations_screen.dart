@@ -16,12 +16,15 @@ class InformationsScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         physics: const BouncingScrollPhysics(),
         children: [
-          LinkCard(
-            title: context.t.informations.github_repository_title,
-            icon: MdiIcons.github,
-            url: Uri.parse(
-              'https://github.com/fikretsengul/flutter_advanced_boilerplate',
-            ),
+          InfoCard(
+            title: context.t.features.routing.title,
+            content: context.t.features.routing.explanation,
+            icon: MdiIcons.mapMarker,
+          ),
+          InfoCard(
+            title: context.t.features.testing.title,
+            content: context.t.features.testing.explanation,
+            icon: MdiIcons.clockAlert,
           ),
           TextDivider(text: context.t.informations.author_divider_title),
           GridView.count(
@@ -34,16 +37,16 @@ class InformationsScreen extends StatelessWidget {
             padding: EdgeInsets.zero,
             children: [
               GridItem(
-                title: context.t.informations.donate_card_title,
-                icon: MdiIcons.coffee,
+                title: context.t.informations.website_card_title,
+                icon: MdiIcons.taxi,
                 url: Uri.parse(
-                  'https://www.buymeacoffee.com/iamfikretB',
+                  'https://taxidriverscuba.com?referer=altaxi_drivers_recorder',
                 ),
               ),
               GridItem(
-                title: context.t.informations.website_card_title,
+                title: context.t.informations.dashboard_card_title,
                 icon: MdiIcons.web,
-                url: Uri.parse('https://fikretsengul.com'),
+                url: Uri.parse('https://dash.taxidrivercuba.com'),
               ),
             ],
           ),

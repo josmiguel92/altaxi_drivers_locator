@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_boilerplate/utils/helpers/location_helper.dart';
-import 'package:flutter_advanced_boilerplate/utils/methods/shortcuts.dart';
+import 'package:altaxi_drivers_locator/features/features/widgets/components/info_card.dart';
+import 'package:altaxi_drivers_locator/features/informations/widgets/grid_item.dart';
+import 'package:altaxi_drivers_locator/features/informations/widgets/text_divider.dart';
+import 'package:altaxi_drivers_locator/utils/helpers/location_helper.dart';
+import 'package:altaxi_drivers_locator/utils/methods/shortcuts.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:flutter_advanced_boilerplate/features/app/models/alert_model.dart';
-import 'package:flutter_advanced_boilerplate/features/geolocation/widgets/grid_item.dart';
-import 'package:flutter_advanced_boilerplate/features/geolocation/widgets/text_divider.dart';
-import 'package:flutter_advanced_boilerplate/i18n/strings.g.dart';
-import 'package:flutter_advanced_boilerplate/utils/helpers/bar_helper.dart';
-import 'package:flutter_advanced_boilerplate/utils/helpers/permission_helper.dart';
+import 'package:altaxi_drivers_locator/features/app/models/alert_model.dart';
+import 'package:altaxi_drivers_locator/i18n/strings.g.dart';
+import 'package:altaxi_drivers_locator/utils/helpers/bar_helper.dart';
+import 'package:altaxi_drivers_locator/utils/helpers/permission_helper.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:flutter_advanced_boilerplate/features/app/widgets/customs/custom_button.dart';
+import 'package:altaxi_drivers_locator/features/app/widgets/customs/custom_button.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 class GeolocationScreen extends StatefulWidget {
@@ -117,44 +118,18 @@ class _GeolocationScreenState extends State<GeolocationScreen> {
           //     'https://github.com/fikretsengul/flutter_advanced_boilerplate',
           //   ),
           // ),
-          TextDivider(text: context.t.geolocation.status_divider_title),
-          GridView.count(
-            physics: const NeverScrollableScrollPhysics(),
-            crossAxisCount: 2,
-            childAspectRatio: 2 / 1.15,
-            crossAxisSpacing: 8,
-            mainAxisSpacing: 8,
-            shrinkWrap: true,
-            padding: EdgeInsets.zero,
-            children: [
-              CustomButton(
-                controller: _btnController,
-                text: context.t.geolocation.enable_geolocation,
-                width: getSize(context).width / 2,
-                onPressed: getLocation,
-              ),
-
-              GridItem(
-                title: context.t.informations.donate_card_title,
-                icon: MdiIcons.coffee,
-                url: Uri.parse(
-                  'https://altaxi.app',
-                ),
-              ),
-              // GridItem(
-              //   title: context.t.informations.donate_card_title,
-              //   icon: MdiIcons.coffee,
-              //   url: Uri.parse(
-              //     'https://www.buymeacoffee.com/iamfikretB',
-              //   ),
-              // ),
-              // GridItem(
-              //   title: context.t.informations.website_card_title,
-              //   icon: MdiIcons.web,
-              //   url: Uri.parse('https://fikretsengul.com'),
-              // ),
-            ],
+          InfoCard(
+            title: context.t.features.testing.title,
+            content: context.t.features.testing.explanation,
+            icon: MdiIcons.clockAlert,
           ),
+          CustomButton(
+            controller: _btnController,
+            text: context.t.geolocation.enable_geolocation,
+            width: getSize(context).width / 1.5,
+            onPressed: getLocation,
+          ),
+
           const SizedBox(height: 36),
         ],
       ),

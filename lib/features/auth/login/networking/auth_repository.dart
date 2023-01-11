@@ -6,6 +6,8 @@ import 'package:flutter_advanced_boilerplate/features/app/models/alert_model.dar
 import 'package:flutter_advanced_boilerplate/features/app/models/auth_model.dart';
 import 'package:flutter_advanced_boilerplate/features/app/models/user_model.dart';
 import 'package:injectable/injectable.dart';
+import 'package:pocketbase/pocketbase.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 @lazySingleton
 class AuthRepository {
@@ -21,24 +23,47 @@ class AuthRepository {
     // Where error is catched and the returned error message is parsed to
     // create alert. But for the demo I will create alert without localization.
 
-    final isIdPwCorrect = username == 'test' && password == 'test';
+    final pb = PocketBase('https://base.altaxi.app');
+    try {
+      final userData =
+          await pb.collection('drivers').authWithPassword(username, password);
 
-    if (isIdPwCorrect) {
-      final user = UserModel.initial();
-      final auth = AuthModel(
-        tokenType: 'Bearer ',
-        accessToken: '',
-        refreshToken: '',
-        user: user,
-      );
+      if (userData.record?.id != null) {
+        print({'👤 Logged in as ', username});
 
-      Timer(const Duration(seconds: 3), () {});
+        final user = UserModel(
+          id: userData.record?.id ?? '',
+          username: userData.record?.getStringValue('username') ?? username,
+          email: userData.record?.getStringValue('email') ?? username,
+          password: '',
+        );
+        final auth = AuthModel(
+          tokenType: 'Bearer ',
+          accessToken: userData.token,
+          refreshToken: '',
+          user: user,
+        );
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setString('auth_token', userData.token);
+        await prefs.setString('auth_userId', userData.record?.id ?? '');
+        await prefs.setString('auth_password', password);
+        await prefs.setString('auth_username', username);
 
-      return DC.data(auth);
-    } else {
+        Timer(const Duration(seconds: 3), () {});
+
+        return DC.data(auth);
+      } else {
+        final alert = AlertModel.alert(
+          message:
+              'ID or PW is wrong. Please enter test for demo to both fields.',
+          type: AlertType.destructive,
+        );
+
+        return DC.error(alert);
+      }
+    } on ClientException catch (error) {
       final alert = AlertModel.alert(
-        message:
-            'ID or PW is wrong. Please enter test for demo to both fields.',
+        message: 'ID or PW is wrong',
         type: AlertType.destructive,
       );
 
