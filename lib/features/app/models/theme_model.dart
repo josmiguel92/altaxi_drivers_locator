@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_boilerplate/theme/app_theme.dart';
+import 'package:altaxi_drivers_locator/theme/app_theme.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:json_theme/json_theme.dart';

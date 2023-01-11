@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:flutter_advanced_boilerplate/features/app/models/auth_model.dart';
-import 'package:flutter_advanced_boilerplate/features/app/models/env_model.dart';
+import 'package:altaxi_drivers_locator/features/app/models/auth_model.dart';
+import 'package:altaxi_drivers_locator/features/app/models/env_model.dart';
 import 'package:fresh_graphql/fresh_graphql.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:http/http.dart' hide Response;
@@ -37,7 +37,8 @@ class GraphQLTokenRefresh {
     }
 
     final response = await client.post(
-      Uri.parse("https://${"${_env.graphQLApiUrl}/token/refresh?userid="}${token.user.id}"),
+      Uri.parse(
+          "https://${"${_env.graphQLApiUrl}/token/refresh?userid="}${token.user.id}"),
       body: jsonEncode(<String, String>{'refresh_token': token.refreshToken}),
     );
     final body = jsonDecode(response.body) as Map<String, dynamic>;
@@ -58,7 +59,9 @@ class GraphQLTokenRefresh {
     return response.errors != null &&
         response.errors!
             .where(
-              (e) => e.extensions!['statusCode'] != null && e.extensions!['statusCode'] == 403,
+              (e) =>
+                  e.extensions!['statusCode'] != null &&
+                  e.extensions!['statusCode'] == 403,
             )
             .toList()
             .isNotEmpty;

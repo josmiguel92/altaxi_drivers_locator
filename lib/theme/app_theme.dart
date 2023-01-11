@@ -1,10 +1,10 @@
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_advanced_boilerplate/theme/color/app_color_scheme.dart';
-import 'package:flutter_advanced_boilerplate/theme/text/app_text_theme.dart';
-import 'package:flutter_advanced_boilerplate/theme/text/app_typography.dart';
-import 'package:flutter_advanced_boilerplate/utils/constants.dart';
+import 'package:altaxi_drivers_locator/theme/color/app_color_scheme.dart';
+import 'package:altaxi_drivers_locator/theme/text/app_text_theme.dart';
+import 'package:altaxi_drivers_locator/theme/text/app_typography.dart';
+import 'package:altaxi_drivers_locator/utils/constants.dart';
 
 Future<ThemeData> createTheme({
   Color? color,
@@ -19,10 +19,13 @@ Future<ThemeData> createTheme({
     brightness: brightness,
   );
 
-  final appTypography = AppTypography.create(fontFamily: $constants.theme.defaultFontFamily);
-  final textTheme = _getTextTheme(appTypography: appTypography, brightness: brightness);
+  final appTypography =
+      AppTypography.create(fontFamily: $constants.theme.defaultFontFamily);
+  final textTheme =
+      _getTextTheme(appTypography: appTypography, brightness: brightness);
 
-  final primaryColor = ElevationOverlay.colorWithOverlay(appColorScheme.surface, appColorScheme.primary, 3);
+  final primaryColor = ElevationOverlay.colorWithOverlay(
+      appColorScheme.surface, appColorScheme.primary, 3);
   final customOnPrimaryColor = appColorScheme.primary.withOpacity(0.5);
 
   return ThemeData(
@@ -74,7 +77,8 @@ SystemUiOverlayStyle createOverlayStyle({
     systemNavigationBarColor: primaryColor,
     systemNavigationBarContrastEnforced: false,
     systemStatusBarContrastEnforced: false,
-    systemNavigationBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
+    systemNavigationBarIconBrightness:
+        isDark ? Brightness.light : Brightness.dark,
     statusBarColor: Colors.transparent,
     statusBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
     statusBarBrightness: isDark ? Brightness.dark : Brightness.light,
@@ -124,5 +128,7 @@ AppTextTheme _getTextTheme({
   required AppTypography appTypography,
   required Brightness brightness,
 }) {
-  return brightness == Brightness.dark ? appTypography.white : appTypography.black;
+  return brightness == Brightness.dark
+      ? appTypography.white
+      : appTypography.black;
 }

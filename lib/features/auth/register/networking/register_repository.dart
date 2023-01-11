@@ -2,8 +2,8 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:data_channel/data_channel.dart';
-import 'package:flutter_advanced_boilerplate/features/app/models/alert_model.dart';
-import 'package:flutter_advanced_boilerplate/features/app/models/user_model.dart';
+import 'package:altaxi_drivers_locator/features/app/models/alert_model.dart';
+import 'package:altaxi_drivers_locator/features/app/models/user_model.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pocketbase/pocketbase.dart';
 import 'package:pocketbase/src/client_exception.dart';

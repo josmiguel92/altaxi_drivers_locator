@@ -1,4 +1,4 @@
-import 'package:flutter_advanced_boilerplate/features/app/models/user_model.dart';
+import 'package:altaxi_drivers_locator/features/app/models/user_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'auth_model.freezed.dart';
@@ -20,5 +20,6 @@ class AuthModel with _$AuthModel {
         user: UserModel.initial(),
       );
 
-  factory AuthModel.fromJson(Map<String, dynamic> json) => _$AuthModelFromJson(json);
+  factory AuthModel.fromJson(Map<String, dynamic> json) =>
+      _$AuthModelFromJson(json);
 }

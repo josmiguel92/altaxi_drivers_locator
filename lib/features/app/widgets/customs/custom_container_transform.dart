@@ -1,7 +1,7 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_boilerplate/utils/constants.dart';
-import 'package:flutter_advanced_boilerplate/utils/methods/shortcuts.dart';
+import 'package:altaxi_drivers_locator/utils/constants.dart';
+import 'package:altaxi_drivers_locator/utils/methods/shortcuts.dart';
 
 class CustomContainerTransform extends StatelessWidget {
   const CustomContainerTransform({
@@ -22,7 +22,8 @@ class CustomContainerTransform extends StatelessWidget {
       closedElevation: $constants.theme.defaultElevation,
       openElevation: $constants.theme.defaultElevation,
       closedShape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(closedBorderRadius ?? $constants.theme.defaultBorderRadius)),
+        borderRadius: BorderRadius.all(Radius.circular(
+            closedBorderRadius ?? $constants.theme.defaultBorderRadius)),
       ),
       closedColor: getTheme(context).surface,
       openColor: getTheme(context).surface,

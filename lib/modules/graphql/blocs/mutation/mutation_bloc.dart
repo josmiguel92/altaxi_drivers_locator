@@ -1,4 +1,4 @@
-import 'package:flutter_advanced_boilerplate/modules/dependency_injection/di.dart';
+import 'package:altaxi_drivers_locator/modules/dependency_injection/di.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
@@ -7,7 +7,8 @@ part 'mutation_bloc.freezed.dart';
 part 'mutation_event.dart';
 part 'mutation_state.dart';
 
-abstract class MutationBloc<T> extends Bloc<MutationEvent<T>, MutationState<T>> {
+abstract class MutationBloc<T>
+    extends Bloc<MutationEvent<T>, MutationState<T>> {
   MutationBloc({required this.options}) : super(const MutationState.initial()) {
     on<MutationEvent<T>>(_onEvent);
 

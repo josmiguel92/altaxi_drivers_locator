@@ -1,10 +1,10 @@
+import 'package:altaxi_drivers_locator/features/auth/login/blocs/auth_cubit.dart';
+import 'package:altaxi_drivers_locator/features/features/features_screen.dart';
+import 'package:altaxi_drivers_locator/features/geolocation/geolocation_screen.dart';
+import 'package:altaxi_drivers_locator/features/informations/informations_screen.dart';
+import 'package:altaxi_drivers_locator/i18n/strings.g.dart';
+import 'package:altaxi_drivers_locator/modules/dependency_injection/di.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_boilerplate/features/auth/login/blocs/auth_cubit.dart';
-import 'package:flutter_advanced_boilerplate/features/features/features_screen.dart';
-import 'package:flutter_advanced_boilerplate/features/geolocation/geolocation_screen.dart';
-import 'package:flutter_advanced_boilerplate/features/informations/informations_screen.dart';
-import 'package:flutter_advanced_boilerplate/i18n/strings.g.dart';
-import 'package:flutter_advanced_boilerplate/modules/dependency_injection/di.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 final $constants = Constants();
@@ -135,13 +135,13 @@ class _Navigation {
   /// Appbar configuration.
   List<AppBar> appbars(BuildContext context) => [
         AppBar(
-          leading: IconButton(
-            // onPressed: () => {},
-            onPressed: () => getIt<AuthCubit>().logOut(),
-            icon: const Icon(MdiIcons.logout),
-          ),
           title: Text(
-            context.t.core.navigation.bottom.features,
+            context.t.core.navigation.bottom.informations,
+          ),
+          leading: IconButton(
+            onPressed: () => {},
+            // onPressed: () => getIt<AuthCubit>().logOut(),
+            icon: const Icon(MdiIcons.information),
           ),
         ),
         AppBar(
@@ -155,26 +155,31 @@ class _Navigation {
           ),
         ),
         AppBar(
+          leading: IconButton(
+            // onPressed: () => {},
+            onPressed: () => getIt<AuthCubit>().logOut(),
+            icon: const Icon(MdiIcons.logout),
+          ),
           title: Text(
-            context.t.core.navigation.bottom.informations,
+            context.t.core.navigation.bottom.features,
           ),
         ),
       ];
 
   /// Bottom navigation configuration.
   List<Widget> bottomNavigationScreens() => const [
-        FeaturesScreen(),
-        GeolocationScreen(),
         InformationsScreen(),
+        GeolocationScreen(),
+        FeaturesScreen(),
       ];
 
   List<NavigationDestination> bottomNavigationItems(BuildContext context) => [
         NavigationDestination(
           icon: const Icon(
-            MdiIcons.fire,
+            MdiIcons.information,
             size: 24,
           ),
-          label: context.t.core.navigation.bottom.features,
+          label: context.t.core.navigation.bottom.informations,
         ),
         NavigationDestination(
           icon: const Icon(
@@ -185,10 +190,10 @@ class _Navigation {
         ),
         NavigationDestination(
           icon: const Icon(
-            MdiIcons.information,
+            MdiIcons.fire,
             size: 24,
           ),
-          label: context.t.core.navigation.bottom.informations,
+          label: context.t.core.navigation.bottom.features,
         ),
       ];
 }

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_boilerplate/features/informations/widgets/grid_item.dart';
-import 'package:flutter_advanced_boilerplate/features/informations/widgets/link_card.dart';
-import 'package:flutter_advanced_boilerplate/features/informations/widgets/text_divider.dart';
-import 'package:flutter_advanced_boilerplate/i18n/strings.g.dart';
+import 'package:altaxi_drivers_locator/features/features/widgets/components/info_card.dart';
+import 'package:altaxi_drivers_locator/features/informations/widgets/grid_item.dart';
+import 'package:altaxi_drivers_locator/features/informations/widgets/link_card.dart';
+import 'package:altaxi_drivers_locator/features/informations/widgets/text_divider.dart';
+import 'package:altaxi_drivers_locator/i18n/strings.g.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class InformationsScreen extends StatelessWidget {

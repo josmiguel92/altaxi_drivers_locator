@@ -1,12 +1,19 @@
-import 'package:flutter_advanced_boilerplate/i18n/strings.g.dart';
-import 'package:flutter_advanced_boilerplate/modules/dio/dio_exception_handler.dart';
-import 'package:flutter_advanced_boilerplate/utils/methods/aliases.dart';
+import 'package:altaxi_drivers_locator/i18n/strings.g.dart';
+import 'package:altaxi_drivers_locator/modules/dio/dio_exception_handler.dart';
+import 'package:altaxi_drivers_locator/utils/methods/aliases.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 part 'alert_model.freezed.dart';
 
-enum AlertType { constructive, destructive, error, notification, exception, quiet }
+enum AlertType {
+  constructive,
+  destructive,
+  error,
+  notification,
+  exception,
+  quiet
+}
 
 @freezed
 class AlertModel with _$AlertModel {
@@ -76,7 +83,8 @@ class AlertModel with _$AlertModel {
     );
   }
 
-  factory AlertModel.initial() => AlertModel.alert(message: '', type: AlertType.quiet);
+  factory AlertModel.initial() =>
+      AlertModel.alert(message: '', type: AlertType.quiet);
 
   factory AlertModel.quiet() {
     return const AlertModel(

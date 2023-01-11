@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_advanced_boilerplate/features/app/models/theme_model.dart';
-import 'package:flutter_advanced_boilerplate/modules/dependency_injection/di.dart';
-import 'package:flutter_advanced_boilerplate/theme/app_theme.dart';
+import 'package:altaxi_drivers_locator/features/app/models/theme_model.dart';
+import 'package:altaxi_drivers_locator/modules/dependency_injection/di.dart';
+import 'package:altaxi_drivers_locator/theme/app_theme.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:injectable/injectable.dart';
@@ -48,11 +48,16 @@ class AppCubit extends HydratedCubit<AppState> {
   }
 
   void updateSystemOverlay() {
-    final systemModeIsDark = SchedulerBinding.instance.window.platformBrightness == Brightness.dark;
+    final systemModeIsDark =
+        SchedulerBinding.instance.window.platformBrightness == Brightness.dark;
 
-    final isDark = state.theme.mode == ThemeMode.system ? systemModeIsDark : state.theme.mode == ThemeMode.dark;
-    final colorScheme = isDark ? state.theme.dark.colorScheme : state.theme.light.colorScheme;
-    final primaryColor = ElevationOverlay.colorWithOverlay(colorScheme.surface, colorScheme.primary, 3);
+    final isDark = state.theme.mode == ThemeMode.system
+        ? systemModeIsDark
+        : state.theme.mode == ThemeMode.dark;
+    final colorScheme =
+        isDark ? state.theme.dark.colorScheme : state.theme.light.colorScheme;
+    final primaryColor = ElevationOverlay.colorWithOverlay(
+        colorScheme.surface, colorScheme.primary, 3);
 
     SystemChrome.setSystemUIOverlayStyle(
       createOverlayStyle(

@@ -1,4 +1,4 @@
-import 'package:flutter_advanced_boilerplate/features/app/models/auth_model.dart';
+import 'package:altaxi_drivers_locator/features/app/models/auth_model.dart';
 import 'package:fresh_dio/fresh_dio.dart';
 import 'package:injectable/injectable.dart';
 

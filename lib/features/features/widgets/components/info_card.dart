@@ -1,10 +1,10 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_boilerplate/features/app/widgets/customs/custom_container_transform.dart';
-import 'package:flutter_advanced_boilerplate/features/app/widgets/utils/skeleton_loader.dart';
-import 'package:flutter_advanced_boilerplate/utils/constants.dart';
-import 'package:flutter_advanced_boilerplate/utils/methods/shortcuts.dart';
+import 'package:altaxi_drivers_locator/features/app/widgets/customs/custom_container_transform.dart';
+import 'package:altaxi_drivers_locator/features/app/widgets/utils/skeleton_loader.dart';
+import 'package:altaxi_drivers_locator/utils/constants.dart';
+import 'package:altaxi_drivers_locator/utils/methods/shortcuts.dart';
 
 class InfoCard extends StatelessWidget {
   const InfoCard({
@@ -24,7 +24,9 @@ class InfoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = widget != null ? Theme.of(context).primaryTextTheme : Theme.of(context).textTheme;
+    final textTheme = widget != null
+        ? Theme.of(context).primaryTextTheme
+        : Theme.of(context).textTheme;
 
     return CustomContainerTransform(
       openWidget: widget,
@@ -32,7 +34,9 @@ class InfoCard extends StatelessWidget {
         return isPlaceholder
             ? _buildSkeleton(context)
             : Card(
-                color: widget != null ? getCustomOnPrimaryColor(context) : getPrimaryColor(context),
+                color: widget != null
+                    ? getCustomOnPrimaryColor(context)
+                    : getPrimaryColor(context),
                 child: Padding(
                   padding: EdgeInsets.all($constants.insets.sm),
                   child: Column(
@@ -68,7 +72,9 @@ class InfoCard extends StatelessWidget {
     return SizedBox(
       height: 275,
       child: Card(
-        color: widget != null ? getCustomOnPrimaryColor(context) : getPrimaryColor(context),
+        color: widget != null
+            ? getCustomOnPrimaryColor(context)
+            : getPrimaryColor(context),
         child: Padding(
           padding: EdgeInsets.all($constants.insets.sm),
           child: SkeletonLoader(

@@ -1,6 +1,6 @@
 import 'package:data_channel/data_channel.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_advanced_boilerplate/features/app/models/alert_model.dart';
+import 'package:altaxi_drivers_locator/features/app/models/alert_model.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 typedef RepositoryFunction<T> = Future<DC<AlertModel, T>> Function();

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_boilerplate/utils/methods/shortcuts.dart';
+import 'package:altaxi_drivers_locator/utils/methods/shortcuts.dart';
 import 'package:shimmer/shimmer.dart';
 
 enum SkeletonDirection { ltr, rtl, ttb, btt }
@@ -49,7 +49,8 @@ class SkeletonLoader extends StatelessWidget {
 
       return Shimmer.fromColors(
         baseColor: baseColor ?? getTheme(context).primary.withOpacity(0.1),
-        highlightColor: highlightColor ?? getTheme(context).primary.withOpacity(0.2),
+        highlightColor:
+            highlightColor ?? getTheme(context).primary.withOpacity(0.2),
         direction: directionn,
         period: period,
         child: child,

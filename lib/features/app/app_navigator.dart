@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_boilerplate/features/app/blocs/app_cubit.dart';
-import 'package:flutter_advanced_boilerplate/features/app/widgets/navigation/bottom_navigation.dart';
-import 'package:flutter_advanced_boilerplate/utils/constants.dart';
+import 'package:altaxi_drivers_locator/features/app/blocs/app_cubit.dart';
+import 'package:altaxi_drivers_locator/features/app/widgets/navigation/bottom_navigation.dart';
+import 'package:altaxi_drivers_locator/utils/constants.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppNavigator extends StatelessWidget {

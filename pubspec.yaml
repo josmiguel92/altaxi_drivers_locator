@@ -1,5 +1,5 @@
-name: flutter_advanced_boilerplate
-description: A new advanced flutter boilerplate project uses BLoC.
+name: altaxi_drivers_locator
+description: A project to geolocation the alTaxi drivers
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.

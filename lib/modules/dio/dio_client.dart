@@ -2,12 +2,12 @@ import 'dart:io';
 
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_advanced_boilerplate/features/app/models/env_model.dart';
-import 'package:flutter_advanced_boilerplate/modules/dio/interceptors/api_error_interceptor.dart';
-import 'package:flutter_advanced_boilerplate/modules/dio/interceptors/bad_network_error_interceptor.dart';
-import 'package:flutter_advanced_boilerplate/modules/dio/interceptors/internal_server_error_interceptor.dart';
-import 'package:flutter_advanced_boilerplate/modules/dio/interceptors/unathenticated_interceptor.dart';
-import 'package:flutter_advanced_boilerplate/modules/token_refresh/dio_token_refresh.dart';
+import 'package:altaxi_drivers_locator/features/app/models/env_model.dart';
+import 'package:altaxi_drivers_locator/modules/dio/interceptors/api_error_interceptor.dart';
+import 'package:altaxi_drivers_locator/modules/dio/interceptors/bad_network_error_interceptor.dart';
+import 'package:altaxi_drivers_locator/modules/dio/interceptors/internal_server_error_interceptor.dart';
+import 'package:altaxi_drivers_locator/modules/dio/interceptors/unathenticated_interceptor.dart';
+import 'package:altaxi_drivers_locator/modules/token_refresh/dio_token_refresh.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:sentry_dio/sentry_dio.dart';
 import 'package:universal_platform/universal_platform.dart';

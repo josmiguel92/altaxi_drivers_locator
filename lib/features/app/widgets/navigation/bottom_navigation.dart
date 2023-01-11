@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_boilerplate/features/app/blocs/app_cubit.dart';
-import 'package:flutter_advanced_boilerplate/modules/dependency_injection/di.dart';
-import 'package:flutter_advanced_boilerplate/utils/constants.dart';
+import 'package:altaxi_drivers_locator/features/app/blocs/app_cubit.dart';
+import 'package:altaxi_drivers_locator/modules/dependency_injection/di.dart';
+import 'package:altaxi_drivers_locator/utils/constants.dart';
 
 class BottomNavigation extends StatelessWidget {
   const BottomNavigation({
@@ -23,7 +23,8 @@ class BottomNavigation extends StatelessWidget {
       child: NavigationBar(
         height: 60,
         selectedIndex: currentPageIndex,
-        onDestinationSelected: (index) => getIt<AppCubit>().changePageIndex(index: index),
+        onDestinationSelected: (index) =>
+            getIt<AppCubit>().changePageIndex(index: index),
         labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
         destinations: destinations,
       ),

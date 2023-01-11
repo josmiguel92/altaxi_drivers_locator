@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_boilerplate/features/app/blocs/app_cubit.dart';
-import 'package:flutter_advanced_boilerplate/utils/methods/shortcuts.dart';
+import 'package:altaxi_drivers_locator/features/app/blocs/app_cubit.dart';
+import 'package:altaxi_drivers_locator/utils/methods/shortcuts.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ThemeCard extends StatelessWidget {
@@ -22,7 +22,9 @@ class ThemeCard extends StatelessWidget {
       builder: (context, state) {
         return Card(
           elevation: 0,
-          color: state.theme.mode == mode ? getCustomOnPrimaryColor(context) : getPrimaryColor(context),
+          color: state.theme.mode == mode
+              ? getCustomOnPrimaryColor(context)
+              : getPrimaryColor(context),
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(24)),
           ),
@@ -32,7 +34,9 @@ class ThemeCard extends StatelessWidget {
             child: Icon(
               icon,
               size: 28,
-              color: state.theme.mode != mode ? getTheme(context).primary : Colors.white,
+              color: state.theme.mode != mode
+                  ? getTheme(context).primary
+                  : Colors.white,
             ),
           ),
         );

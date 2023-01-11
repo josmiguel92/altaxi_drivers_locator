@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter_advanced_boilerplate/features/app/models/auth_model.dart';
+import 'package:altaxi_drivers_locator/features/app/models/auth_model.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fresh_dio/fresh_dio.dart';
 import 'package:injectable/injectable.dart';
@@ -29,6 +29,7 @@ class SecureAuthStorage extends TokenStorage<AuthModel> {
 
   @override
   Future<void> write(AuthModel token) async {
-    await _secureStorage.write(key: 'auth_storage', value: jsonEncode(token.toJson()));
+    await _secureStorage.write(
+        key: 'auth_storage', value: jsonEncode(token.toJson()));
   }
 }

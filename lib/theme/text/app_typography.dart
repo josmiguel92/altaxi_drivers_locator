@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_boilerplate/theme/text/app_text_theme.dart';
-import 'package:flutter_advanced_boilerplate/utils/constants.dart';
+import 'package:altaxi_drivers_locator/theme/text/app_text_theme.dart';
+import 'package:altaxi_drivers_locator/utils/constants.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'app_typography.freezed.dart';
@@ -25,7 +25,8 @@ class AppTypography with _$AppTypography {
         white: white.materialTextTheme,
       );
 
-  static AppTextTheme _createTextTheme(String fontFamily, Color color) => AppTextTheme(
+  static AppTextTheme _createTextTheme(String fontFamily, Color color) =>
+      AppTextTheme(
         displayLarge: TextStyle(
           debugLabel: 'appTextTheme displayLarge',
           color: color,

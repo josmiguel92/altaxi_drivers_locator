@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_boilerplate/utils/constants.dart';
-import 'package:flutter_advanced_boilerplate/utils/methods/shortcuts.dart';
+import 'package:altaxi_drivers_locator/utils/constants.dart';
+import 'package:altaxi_drivers_locator/utils/methods/shortcuts.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 class CustomButton extends StatefulWidget {
@@ -35,7 +35,9 @@ class _CustomButtonState extends State<CustomButton> {
       elevation: $constants.theme.defaultElevation,
       width: widget.width,
       height: widget.height,
-      color: widget.onPressed != null ? getCustomOnPrimaryColor(context) : getPrimaryColor(context),
+      color: widget.onPressed != null
+          ? getCustomOnPrimaryColor(context)
+          : getPrimaryColor(context),
       controller: widget.controller,
       onPressed: widget.onPressed,
       valueColor: getTheme(context).primary,

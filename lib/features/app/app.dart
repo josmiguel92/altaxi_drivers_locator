@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_boilerplate/features/app/blocs/app_cubit.dart';
-import 'package:flutter_advanced_boilerplate/i18n/strings.g.dart';
-import 'package:flutter_advanced_boilerplate/modules/dependency_injection/di.dart';
-import 'package:flutter_advanced_boilerplate/utils/constants.dart';
-import 'package:flutter_advanced_boilerplate/utils/methods/aliases.dart';
+import 'package:altaxi_drivers_locator/features/app/blocs/app_cubit.dart';
+import 'package:altaxi_drivers_locator/i18n/strings.g.dart';
+import 'package:altaxi_drivers_locator/modules/dependency_injection/di.dart';
+import 'package:altaxi_drivers_locator/utils/constants.dart';
+import 'package:altaxi_drivers_locator/utils/methods/aliases.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';

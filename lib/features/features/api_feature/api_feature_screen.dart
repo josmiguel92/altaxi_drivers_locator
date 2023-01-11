@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_boilerplate/features/app/widgets/customs/custom_segmented_control.dart';
-import 'package:flutter_advanced_boilerplate/features/features/api_feature/graphql_api_page/graphql_api_page.dart';
-import 'package:flutter_advanced_boilerplate/features/features/api_feature/rest_api_page/rest_api_page.dart';
-import 'package:flutter_advanced_boilerplate/utils/methods/shortcuts.dart';
+import 'package:altaxi_drivers_locator/features/app/widgets/customs/custom_segmented_control.dart';
+import 'package:altaxi_drivers_locator/features/features/api_feature/graphql_api_page/graphql_api_page.dart';
+import 'package:altaxi_drivers_locator/features/features/api_feature/rest_api_page/rest_api_page.dart';
+import 'package:altaxi_drivers_locator/utils/methods/shortcuts.dart';
 
 class ApiFeatureScreen extends StatefulWidget {
   const ApiFeatureScreen({super.key});

@@ -1,4 +1,4 @@
-import 'package:flutter_advanced_boilerplate/utils/methods/aliases.dart';
+import 'package:altaxi_drivers_locator/utils/methods/aliases.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 

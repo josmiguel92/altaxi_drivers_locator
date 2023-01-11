@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_boilerplate/utils/methods/shortcuts.dart';
+import 'package:altaxi_drivers_locator/utils/methods/shortcuts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -35,7 +35,8 @@ class LinkCard extends StatelessWidget {
             const SizedBox(width: 16),
             Text(
               title,
-              style: getTextTheme(context).titleMedium!.apply(fontWeightDelta: 2),
+              style:
+                  getTextTheme(context).titleMedium!.apply(fontWeightDelta: 2),
             ),
           ],
         ),
@@ -43,6 +44,7 @@ class LinkCard extends StatelessWidget {
     );
   }
 
-  Future<bool> _launchUrl() async =>
-      await canLaunchUrl(url) ? await launchUrl(url) : throw Exception('Could not launch $url');
+  Future<bool> _launchUrl() async => await canLaunchUrl(url)
+      ? await launchUrl(url)
+      : throw Exception('Could not launch $url');
 }

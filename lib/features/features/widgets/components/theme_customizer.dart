@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_boilerplate/features/app/blocs/app_cubit.dart';
-import 'package:flutter_advanced_boilerplate/features/features/widgets/components/theme_card.dart';
-import 'package:flutter_advanced_boilerplate/modules/dependency_injection/di.dart';
-import 'package:flutter_advanced_boilerplate/utils/constants.dart';
-import 'package:flutter_advanced_boilerplate/utils/methods/shortcuts.dart';
+import 'package:altaxi_drivers_locator/features/app/blocs/app_cubit.dart';
+import 'package:altaxi_drivers_locator/features/features/widgets/components/theme_card.dart';
+import 'package:altaxi_drivers_locator/modules/dependency_injection/di.dart';
+import 'package:altaxi_drivers_locator/utils/constants.dart';
+import 'package:altaxi_drivers_locator/utils/methods/shortcuts.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:spring_button/spring_button.dart';
@@ -30,12 +30,14 @@ class ThemeCustomizer extends StatelessWidget {
             ThemeCard(
               mode: ThemeMode.system,
               icon: MdiIcons.brightnessAuto,
-              onTap: () => getIt<AppCubit>().setThemeMode(mode: ThemeMode.system),
+              onTap: () =>
+                  getIt<AppCubit>().setThemeMode(mode: ThemeMode.system),
             ),
             ThemeCard(
               mode: ThemeMode.light,
               icon: MdiIcons.brightness7,
-              onTap: () => getIt<AppCubit>().setThemeMode(mode: ThemeMode.light),
+              onTap: () =>
+                  getIt<AppCubit>().setThemeMode(mode: ThemeMode.light),
             ),
             ThemeCard(
               mode: ThemeMode.dark,
@@ -117,7 +119,8 @@ class ThemeCustomizer extends StatelessWidget {
 }
 
 class SelectedColor extends StatelessWidget {
-  const SelectedColor({super.key, required this.selectedColor, this.icon, this.iconColor});
+  const SelectedColor(
+      {super.key, required this.selectedColor, this.icon, this.iconColor});
   final Color selectedColor;
   final IconData? icon;
   final Color? iconColor;

@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:flutter_advanced_boilerplate/features/app/models/alert_model.dart';
-import 'package:flutter_advanced_boilerplate/features/app/models/user_model.dart';
-import 'package:flutter_advanced_boilerplate/features/auth/register/networking/register_repository.dart';
+import 'package:altaxi_drivers_locator/features/app/models/alert_model.dart';
+import 'package:altaxi_drivers_locator/features/app/models/user_model.dart';
+import 'package:altaxi_drivers_locator/features/auth/register/networking/register_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';

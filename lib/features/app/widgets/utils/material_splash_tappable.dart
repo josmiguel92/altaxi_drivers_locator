@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_boilerplate/utils/constants.dart';
-import 'package:flutter_advanced_boilerplate/utils/methods/shortcuts.dart';
+import 'package:altaxi_drivers_locator/utils/constants.dart';
+import 'package:altaxi_drivers_locator/utils/methods/shortcuts.dart';
 
 class MaterialSplashTappable extends StatelessWidget {
-  const MaterialSplashTappable({super.key, this.radius, this.onTap, required this.child});
+  const MaterialSplashTappable(
+      {super.key, this.radius, this.onTap, required this.child});
 
   final double? radius;
   final void Function()? onTap;
@@ -19,7 +20,8 @@ class MaterialSplashTappable extends StatelessWidget {
             radius ?? $constants.theme.defaultBorderRadius,
           ),
         ),
-        overlayColor: MaterialStateProperty.all(getCustomOnPrimaryColor(context).withOpacity(0.1)),
+        overlayColor: MaterialStateProperty.all(
+            getCustomOnPrimaryColor(context).withOpacity(0.1)),
         onTap: onTap,
         child: child,
       ),

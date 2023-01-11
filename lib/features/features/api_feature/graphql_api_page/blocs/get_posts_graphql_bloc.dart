@@ -1,6 +1,6 @@
-import 'package:flutter_advanced_boilerplate/modules/graphql/blocs/query/query_bloc.dart';
-import 'package:flutter_advanced_boilerplate/modules/graphql/models/graphql_api.dart';
-import 'package:flutter_advanced_boilerplate/utils/constants.dart';
+import 'package:altaxi_drivers_locator/modules/graphql/blocs/query/query_bloc.dart';
+import 'package:altaxi_drivers_locator/modules/graphql/models/graphql_api.dart';
+import 'package:altaxi_drivers_locator/utils/constants.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:injectable/injectable.dart';
 
@@ -38,7 +38,9 @@ class GetPostsGraphQLBloc extends QueryBloc<PostsPaginated$Query> {
         final posts = data?.posts?.data ?? [];
 
         if (posts.isNotEmpty && posts.length < total) {
-          return posts.length % $constants.api.maxItemToBeFetchedAtOneTime == 0 && i == posts.length - threshold;
+          return posts.length % $constants.api.maxItemToBeFetchedAtOneTime ==
+                  0 &&
+              i == posts.length - threshold;
         }
 
         return false;
@@ -63,12 +65,15 @@ class GetPostsGraphQLBloc extends QueryBloc<PostsPaginated$Query> {
             ),
           ).toJson(),
           updateQuery: (previousResultData, fetchMoreResultData) {
-            final prevResultData = (previousResultData?['posts'] as Map<String, dynamic>)['data'] as List<dynamic>;
-            final moreResultData = (fetchMoreResultData?['posts'] as Map<String, dynamic>)['data'] as List<dynamic>;
+            final prevResultData = (previousResultData?['posts']
+                as Map<String, dynamic>)['data'] as List<dynamic>;
+            final moreResultData = (fetchMoreResultData?['posts']
+                as Map<String, dynamic>)['data'] as List<dynamic>;
 
             final repos = <dynamic>[...prevResultData, ...moreResultData];
 
-            (fetchMoreResultData?['posts'] as Map<String, dynamic>)['data'] = repos;
+            (fetchMoreResultData?['posts'] as Map<String, dynamic>)['data'] =
+                repos;
 
             return fetchMoreResultData;
           },
