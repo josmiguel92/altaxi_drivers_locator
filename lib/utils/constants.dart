@@ -11,7 +11,7 @@ final $constants = Constants();
 
 @immutable
 class Constants {
-  final appTitle = 'Flutter Advanced Boilerplate';
+  final appTitle = 'alTaxi drivers locator';
 
   /// Theme defaults.
   late final theme = _Theme();
