@@ -1,9 +1,9 @@
-import 'package:data_channel/data_channel.dart';
-import 'package:dio/dio.dart';
 import 'package:altaxi_drivers_locator/features/app/models/alert_model.dart';
 import 'package:altaxi_drivers_locator/features/app/models/paginated_model.dart';
 import 'package:altaxi_drivers_locator/features/features/api_feature/rest_api_page/models/post_rest_model.dart';
 import 'package:altaxi_drivers_locator/modules/dio/dio_exception_handler.dart';
+import 'package:data_channel/data_channel.dart';
+import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
 @lazySingleton
@@ -38,7 +38,11 @@ class PostsRestRepository {
       final total = (data['meta'] as Map<String, dynamic>)['totalCount'] as int;
 
       final paginatedPosts = PaginatedModel(
-          currentPage: page, size: size, total: total, items: posts);
+        currentPage: page,
+        size: size,
+        total: total,
+        items: posts,
+      );
 
       /* final paginatedPosts = PaginatedModel<PostRestModel>.fromJson(
         response.data ?? {},

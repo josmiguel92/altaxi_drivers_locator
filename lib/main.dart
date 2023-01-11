@@ -18,7 +18,7 @@ import 'package:universal_platform/universal_platform.dart';
 import 'package:url_strategy/url_strategy.dart';
 import 'package:workmanager/workmanager.dart';
 
-const fetchBackground = "fetchBackground";
+const fetchBackground = 'fetchBackground';
 
 void callbackDispatcher() {
   Workmanager().executeTask((task, inputData) async {
@@ -35,7 +35,7 @@ void callbackDispatcher() {
   });
 }
 
-// Be sure to annotate your callback function to avoid issues in release mode on Flutter >= 3.3.0
+// Be sure to annotate your callback function to avoid issues in release mode on Flutter >= 3.3.0.
 @pragma('vm:entry-point')
 void sendLocationAlarm() {
   print('⏰ alarm called');
@@ -50,9 +50,9 @@ Future<void> main() async {
     isInDebugMode: true,
   );
   await Workmanager().registerPeriodicTask(
-    "1",
+    '1',
     fetchBackground,
-    frequency: Duration(minutes: 15),
+    frequency: const Duration(minutes: 15),
   );
 
   await AndroidAlarmManager.initialize();

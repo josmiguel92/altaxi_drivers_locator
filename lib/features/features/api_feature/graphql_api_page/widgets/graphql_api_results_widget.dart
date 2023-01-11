@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:altaxi_drivers_locator/features/app/widgets/utils/skeleton_loader.dart';
 import 'package:altaxi_drivers_locator/features/features/api_feature/graphql_api_page/blocs/get_posts_graphql_bloc.dart';
 import 'package:altaxi_drivers_locator/i18n/strings.g.dart';
 import 'package:altaxi_drivers_locator/modules/graphql/models/graphql_api.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:keframe/keframe.dart';
@@ -43,8 +43,9 @@ class GraphQLApiResultsWidget extends StatelessWidget {
                   children: [
                     tile,
                     const Padding(
-                        padding: EdgeInsets.all(16),
-                        child: CircularProgressIndicator())
+                      padding: EdgeInsets.all(16),
+                      child: CircularProgressIndicator(),
+                    ),
                   ],
                 );
               }

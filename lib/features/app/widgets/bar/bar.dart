@@ -449,8 +449,12 @@ class _BarState<K extends Object?> extends State<Bar<K>>
         boxShadow: widget.boxShadows,
         borderRadius: widget.borderRadius,
         border: widget.borderColor != null
-            ? Border.fromBorderSide(BorderSide(
-                color: widget.borderColor!, width: widget.borderWidth))
+            ? Border.fromBorderSide(
+                BorderSide(
+                  color: widget.borderColor!,
+                  width: widget.borderWidth,
+                ),
+              )
             : null,
       ),
       child: Padding(
@@ -476,8 +480,12 @@ class _BarState<K extends Object?> extends State<Bar<K>>
         boxShadow: widget.boxShadows,
         borderRadius: widget.borderRadius,
         border: widget.borderColor != null
-            ? Border.fromBorderSide(BorderSide(
-                color: widget.borderColor!, width: widget.borderWidth))
+            ? Border.fromBorderSide(
+                BorderSide(
+                  color: widget.borderColor!,
+                  width: widget.borderWidth,
+                ),
+              )
             : null,
       ),
       child: Column(

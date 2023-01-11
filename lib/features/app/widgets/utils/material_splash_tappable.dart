@@ -3,8 +3,12 @@ import 'package:altaxi_drivers_locator/utils/constants.dart';
 import 'package:altaxi_drivers_locator/utils/methods/shortcuts.dart';
 
 class MaterialSplashTappable extends StatelessWidget {
-  const MaterialSplashTappable(
-      {super.key, this.radius, this.onTap, required this.child});
+  const MaterialSplashTappable({
+    super.key,
+    this.radius,
+    this.onTap,
+    required this.child,
+  });
 
   final double? radius;
   final void Function()? onTap;
@@ -21,7 +25,8 @@ class MaterialSplashTappable extends StatelessWidget {
           ),
         ),
         overlayColor: MaterialStateProperty.all(
-            getCustomOnPrimaryColor(context).withOpacity(0.1)),
+          getCustomOnPrimaryColor(context).withOpacity(0.1),
+        ),
         onTap: onTap,
         child: child,
       ),

@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:altaxi_drivers_locator/i18n/strings.g.dart';
 import 'package:altaxi_drivers_locator/utils/constants.dart';
 import 'package:altaxi_drivers_locator/utils/methods/shortcuts.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 import 'package:styled_text/styled_text.dart';
@@ -100,21 +100,24 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return InputDecoration(
       disabledBorder: UnderlineInputBorder(
         borderRadius: BorderRadius.all(
-            Radius.circular($constants.theme.defaultBorderRadius)),
+          Radius.circular($constants.theme.defaultBorderRadius),
+        ),
         borderSide: const BorderSide(
           style: BorderStyle.none,
         ),
       ),
       enabledBorder: UnderlineInputBorder(
         borderRadius: BorderRadius.all(
-            Radius.circular($constants.theme.defaultBorderRadius)),
+          Radius.circular($constants.theme.defaultBorderRadius),
+        ),
         borderSide: const BorderSide(
           style: BorderStyle.none,
         ),
       ),
       errorBorder: UnderlineInputBorder(
         borderRadius: BorderRadius.all(
-            Radius.circular($constants.theme.defaultBorderRadius)),
+          Radius.circular($constants.theme.defaultBorderRadius),
+        ),
         borderSide: BorderSide(
           color: $constants.palette.red.withOpacity(0.3),
           width: 4,
@@ -122,7 +125,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
       ),
       focusedErrorBorder: UnderlineInputBorder(
         borderRadius: BorderRadius.all(
-            Radius.circular($constants.theme.defaultBorderRadius)),
+          Radius.circular($constants.theme.defaultBorderRadius),
+        ),
         borderSide: BorderSide(
           color: $constants.palette.red.withOpacity(0.3),
           width: 4,
@@ -130,7 +134,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
       ),
       focusedBorder: UnderlineInputBorder(
         borderRadius: BorderRadius.all(
-            Radius.circular($constants.theme.defaultBorderRadius)),
+          Radius.circular($constants.theme.defaultBorderRadius),
+        ),
         borderSide: BorderSide(
           color: widget.isRequired && form.control(widget.formControlName).valid
               ? $constants.palette.green.withOpacity(0.5)
@@ -174,7 +179,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
             decoration: BoxDecoration(
               border: Border.fromBorderSide(
                 BorderSide(
-                    color: getCustomOnPrimaryColor(context).withOpacity(0.2)),
+                  color: getCustomOnPrimaryColor(context).withOpacity(0.2),
+                ),
               ),
               borderRadius: const BorderRadius.all(Radius.circular(32)),
             ),
@@ -229,12 +235,14 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     validationMessages: {
                       ValidationMessage.minLength: (_) =>
                           Translations.of(context).core.errors.form.minLength(
-                              field: widget.labelText,
-                              count: widget.minLength.toString()),
+                                field: widget.labelText,
+                                count: widget.minLength.toString(),
+                              ),
                       ValidationMessage.maxLength: (_) =>
                           Translations.of(context).core.errors.form.maxLength(
-                              field: widget.labelText,
-                              count: widget.maxLength.toString()),
+                                field: widget.labelText,
+                                count: widget.maxLength.toString(),
+                              ),
                       ValidationMessage.required: (_) => context
                           .t.core.errors.form
                           .required(field: widget.labelText),
@@ -246,12 +254,17 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     minLines: widget.minLines,
                     keyboardType: widget.keyboardType,
                     textCapitalization: widget.textCapitalization,
-                    buildCounter: (context,
-                        {required int currentLength,
-                        required bool isFocused,
-                        int? maxLength}) {
-                      return buildCounter(context,
-                          currentLength: currentLength, maxLength: maxLength);
+                    buildCounter: (
+                      context, {
+                      required int currentLength,
+                      required bool isFocused,
+                      int? maxLength,
+                    }) {
+                      return buildCounter(
+                        context,
+                        currentLength: currentLength,
+                        maxLength: maxLength,
+                      );
                     },
                     decoration: getTextFieldDecoration(form),
                     inputFormatters: widget.inputFormatters,

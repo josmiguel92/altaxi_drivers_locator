@@ -10,10 +10,10 @@ Future<bool> sendLocationToBase({String info = 'empty'}) async {
   );
 
   final pb = PocketBase('https://base.altaxi.app');
-  
+
   try {
     final prefs = await SharedPreferences.getInstance();
-    final userId = prefs.getString('auth_userId');
+    // final userId = prefs.getString('auth_userId');
     final username = prefs.getString('auth_username') ?? '';
     final password = prefs.getString('auth_password') ?? '';
 

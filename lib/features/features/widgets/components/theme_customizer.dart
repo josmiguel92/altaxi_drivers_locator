@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:altaxi_drivers_locator/features/app/blocs/app_cubit.dart';
 import 'package:altaxi_drivers_locator/features/features/widgets/components/theme_card.dart';
 import 'package:altaxi_drivers_locator/modules/dependency_injection/di.dart';
 import 'package:altaxi_drivers_locator/utils/constants.dart';
 import 'package:altaxi_drivers_locator/utils/methods/shortcuts.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:spring_button/spring_button.dart';
@@ -119,8 +119,12 @@ class ThemeCustomizer extends StatelessWidget {
 }
 
 class SelectedColor extends StatelessWidget {
-  const SelectedColor(
-      {super.key, required this.selectedColor, this.icon, this.iconColor});
+  const SelectedColor({
+    super.key,
+    required this.selectedColor,
+    this.icon,
+    this.iconColor,
+  });
   final Color selectedColor;
   final IconData? icon;
   final Color? iconColor;
